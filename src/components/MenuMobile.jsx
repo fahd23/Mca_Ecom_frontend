@@ -38,7 +38,7 @@ const MenuMobile = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
                   {subMenuData?.map((i) => (
                     <Link
                       key={i.id}
-                      href="/"
+                      to={`/category/${i.id}`}
                       onClick={() => setShowCatMenu(false)}
                     >
                       <li className="py-4 px-8 border-t flex justify-between">

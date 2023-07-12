@@ -1,15 +1,16 @@
+import { Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Footer from "./components/Footer";
-import Header from "./components/Headers";
-import HeroBanner from "./components/HeroBanner";
+import Layout from "./layout";
+import Home from "./Pages/Home";
 
 function App() {
   return (
-    <>
-      <Header />
-      <HeroBanner />
-      <Footer />
-    </>
+    <Layout>
+      <Outlet />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+      </Routes>
+    </Layout>
   );
 }
 
