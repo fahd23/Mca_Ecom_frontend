@@ -3,14 +3,15 @@ import Wrapper from "./Wrapper";
 import Menu from "./Menu";
 import MenuMobile from "./MenuMobile";
 
-import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
+import { FiUser } from "react-icons/fi";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [profile, setProfile] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
   const [show, setShow] = useState("translate-y-0");
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -41,8 +42,13 @@ const Header = () => {
       className={`w-full h-[50px] md:h-[80px] flex justify-between items-center bg-white z-20 sticky top-0 transition-transform duration-300 ${show}`}
     >
       <Wrapper className="flex justify-between items-center h-[60px]">
-        <Link to="/">
-          <img src="/logo.svg" className="w-[40px] md:w-[60px]" alt="logo" />
+        <Link to="/" className="flex gap-4 items-center">
+          <img
+            src="/chkoutlogo.png"
+            className="w-[30px] md:w-[40px]"
+            alt="logo"
+          />
+          <h1 className="font-fingerPaint font-semibold">Chk Out</h1>
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
         {mobileMenu && (
@@ -54,20 +60,32 @@ const Header = () => {
         )}
         <div className="flex items-center gap-2 text-black">
           {/* Icon Start */}
-          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
-            <IoMdHeartEmpty className="text-[19px] md:text-[24px]" />
-            <div className="h-[14px] md:h-[18px] min-w-[18px] rounded-full bg-red-600 absolute top-1  left-5 md:left-7 text-white text-[10px] md-text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
-              23
-            </div>
-          </div>
-          {/* Icon End */}
-          {/* Icon Start */}
           <Link to="/cart">
             <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
               <BsCart className="text-[15px] md:text-[20px]" />
               <div className="h-[14px] md:h-[18px] min-w-[18px] rounded-full bg-red-600 absolute top-1  left-5 md:left-7 text-white text-[10px] md-text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
-                5
+                0
               </div>
+            </div>
+          </Link>
+          {/* Icon End */}
+          {/* Icon Start */}
+          <Link
+            to="/"
+            onMouseEnter={() => setProfile(true)}
+            onMouseLeave={() => setProfile(false)}
+          >
+            <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+              <FiUser className="text-[15px] md:text-[20px]" />
+              {profile && (
+                <ul className="bg-white absolute top-[48px] left-[-30px] min-w-[120px] px-1 py-1 shadow-lg rounded-sm">
+                  <Link to="/">
+                    <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+                      Log In
+                    </li>
+                  </Link>
+                </ul>
+              )}
             </div>
           </Link>
           {/* Icon End */}
