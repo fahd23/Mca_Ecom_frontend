@@ -9,7 +9,11 @@ import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 
+import { useAuth0 } from "@auth0/auth0-react";
+
 const Header = () => {
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
   const [mobileMenu, setMobileMenu] = useState(false);
   const [profile, setProfile] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
@@ -42,13 +46,13 @@ const Header = () => {
       className={`w-full h-[50px] md:h-[80px] flex justify-between items-center bg-white z-20 sticky top-0 transition-transform duration-300 ${show}`}
     >
       <Wrapper className="flex justify-between items-center h-[60px]">
-        <Link to="/" className="flex gap-1 lg:gap-4 items-center">
+        <Link to="/" className="flex gap-1 lg:gap-2 items-center">
           <img
             src="/chkoutlogo.png"
             className="w-[30px] md:w-[40px]"
             alt="logo"
           />
-          <h1 className="font-fingerPaint font-semibold text-sm lg:text-lg">
+          <h1 className="font-fingerPaint font-semibold text-sm lg:text-lg tracking-tighter">
             Chk Out
           </h1>
         </Link>
@@ -81,11 +85,25 @@ const Header = () => {
               <FiUser className="text-[15px] md:text-[20px]" />
               {profile && (
                 <ul className="bg-white absolute top-10 lg:top-[48px] left-[-30px] min-w-[80px] lg:min-w-[120px] px-1 py-1 shadow-lg rounded-sm">
-                  <Link to="/">
-                    <li className="h-6 lg:h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+                  {isAuthenticated ? (
+                    <li
+                      className="h-6 lg:h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md"
+                      onClick={() =>
+                        logout({
+                          logoutParams: { returnTo: window.location.origin },
+                        })
+                      }
+                    >
+                      Log Out
+                    </li>
+                  ) : (
+                    <li
+                      className="h-6 lg:h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md"
+                      onClick={() => loginWithRedirect()}
+                    >
                       Log In
                     </li>
-                  </Link>
+                  )}
                 </ul>
               )}
             </div>
