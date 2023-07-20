@@ -42,13 +42,15 @@ const Header = () => {
       className={`w-full h-[50px] md:h-[80px] flex justify-between items-center bg-white z-20 sticky top-0 transition-transform duration-300 ${show}`}
     >
       <Wrapper className="flex justify-between items-center h-[60px]">
-        <Link to="/" className="flex gap-4 items-center">
+        <Link to="/" className="flex gap-1 lg:gap-4 items-center">
           <img
             src="/chkoutlogo.png"
             className="w-[30px] md:w-[40px]"
             alt="logo"
           />
-          <h1 className="font-fingerPaint font-semibold">Chk Out</h1>
+          <h1 className="font-fingerPaint font-semibold text-sm lg:text-lg">
+            Chk Out
+          </h1>
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
         {mobileMenu && (
@@ -78,9 +80,9 @@ const Header = () => {
             <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
               <FiUser className="text-[15px] md:text-[20px]" />
               {profile && (
-                <ul className="bg-white absolute top-[48px] left-[-30px] min-w-[120px] px-1 py-1 shadow-lg rounded-sm">
+                <ul className="bg-white absolute top-10 lg:top-[48px] left-[-30px] min-w-[80px] lg:min-w-[120px] px-1 py-1 shadow-lg rounded-sm">
                   <Link to="/">
-                    <li className="h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+                    <li className="h-6 lg:h-12 flex justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
                       Log In
                     </li>
                   </Link>
