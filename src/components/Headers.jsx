@@ -53,7 +53,7 @@ const Header = () => {
             alt="logo"
           />
           <h1 className="font-fingerPaint font-semibold text-sm lg:text-lg tracking-tighter">
-            Chk Out
+            Super Shop
           </h1>
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
@@ -64,7 +64,17 @@ const Header = () => {
             setMobileMenu={setMobileMenu}
           />
         )}
+
         <div className="flex items-center gap-2 text-black">
+          {/* Icon Start */}
+          <Link to="/" className="flex items-center gap-2 text-black">
+            <img
+              src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg"
+              alt="Become a Seller"
+            />
+            <div className="hidden lg:flex">Become a Seller</div>
+          </Link>
+          {/* Icon End */}
           {/* Icon Start */}
           <Link to="/cart">
             <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
@@ -75,6 +85,7 @@ const Header = () => {
             </div>
           </Link>
           {/* Icon End */}
+
           {/* Icon Start */}
           <Link
             to="/"
